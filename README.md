@@ -135,9 +135,6 @@ InsightSQL/
 │   ├── vite.config.js       # Vite configuration
 │   └── package.json
 │
-├── AI_CONTEXT.md            # Architecture documentation
-├── PROJECT_PLAN.md          # Development phases
-├── KNOWN_ISSUES.md          # AI generation bugs
 └── README.md                # This file
 ```
 
@@ -290,14 +287,6 @@ The Gemini AI receives a schema-aware system prompt that includes:
 3. **Read-Only Transaction** — PostgreSQL enforces `BEGIN READ ONLY` at database level
 4. **Query Timeout** — 5-second limit prevents long-running queries
 
-### Known Issues
-See `KNOWN_ISSUES.md` for documented Gemini SQL generation bugs:
-- Unterminated quoted strings
-- Missing interval columns
-- Undefined table aliases
-
-All issues are properly handled by the application's error handling.
-
 ---
 
 ## 🎨 UI/UX Features
@@ -385,7 +374,6 @@ Set environment variables:
 ### AI questions fail
 - ✅ Verify `GEMINI_API_KEY` is valid and has quota
 - ✅ Check backend logs for Gemini API errors
-- ✅ See `KNOWN_ISSUES.md` for documented generation bugs
 
 ### Tests fail
 - ✅ Ensure backend server is running for API tests
@@ -430,14 +418,6 @@ Built to demonstrate full-stack engineering skills including:
 - React data visualization and state management
 - AI integration with prompt engineering
 - Production-ready error handling and validation
-
----
-
-## 🔗 Links
-
-- **Documentation:** See `AI_CONTEXT.md` for architecture details
-- **Development Plan:** See `PROJECT_PLAN.md` for phase-by-phase progress
-- **Known Issues:** See `KNOWN_ISSUES.md` for AI generation bugs
 
 ---
 
