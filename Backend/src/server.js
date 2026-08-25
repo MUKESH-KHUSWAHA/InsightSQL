@@ -13,12 +13,12 @@ const app = express();
 // CORS — allow frontend (Vite dev server locally, Vercel in production)
 const allowedOrigins =
   env.NODE_ENV === 'production'
-    ? [env.FRONTEND_URL || 'https://insight-sql-git-main-msit4.vercel.app']
+    ? [env.FRONTEND_URL || 'https://insight-sql-eosin.vercel.app']
     : ['http://localhost:5173', 'http://localhost:5174'];
 
 app.use(cors({
   origin: function (origin, callback) {
-    // allow requests with no origin (e.g. curl, Postman, server-to-server)
+    // allow requests with no origin (curl, Postman, server-to-server)
     if (!origin) return callback(null, true);
 
     if (allowedOrigins.includes(origin)) {
@@ -38,13 +38,13 @@ app.use(express.json({ limit: '1mb' }));
 
 // --------------- Routes ---------------
 
-// Root route - for health check when visiting base URL
 app.get('/', (req, res) => {
   res.json({
     success: true,
     message: 'InsightSQL Backend API',
     version: '1.0.0',
     environment: env.NODE_ENV,
+    allowedOrigins,
     endpoints: {
       health: '/api/health',
       summary: '/api/summary',
@@ -64,10 +64,7 @@ app.use('/api', askRoutes);
 
 // --------------- Error Handling ---------------
 
-// 404 for unmatched routes
 app.use(notFoundHandler);
-
-// Global error handler (must be last)
 app.use(errorHandler);
 
 // --------------- Start Server ---------------
