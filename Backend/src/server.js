@@ -13,7 +13,7 @@ const app = express();
 // CORS — allow frontend (Vite dev server locally, Vercel in production)
 const allowedOrigins =
   env.NODE_ENV === 'production'
-    ? [env.FRONTEND_URL || 'https://insight-sql-eosin.vercel.app']
+    ? [env.FRONTEND_URL || 'https://insight-sql-git-main-msit4.vercel.app']
     : ['http://localhost:5173', 'http://localhost:5174'];
 
 app.use(cors({
