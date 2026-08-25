@@ -24,6 +24,25 @@ app.use(express.json({ limit: '1mb' }));
 
 // --------------- Routes ---------------
 
+// Root route - for health check when visiting base URL
+app.get('/', (req, res) => {
+  res.json({
+    success: true,
+    message: 'InsightSQL Backend API',
+    version: '1.0.0',
+    endpoints: {
+      health: '/api/health',
+      summary: '/api/summary',
+      revenue: '/api/revenue/monthly',
+      products: '/api/products/top',
+      customers: '/api/customers/top',
+      atRisk: '/api/customers/at-risk',
+      retention: '/api/retention',
+      ask: 'POST /api/ask'
+    }
+  });
+});
+
 app.use('/api/health', healthRoutes);
 app.use('/api', analyticsRoutes);
 app.use('/api', askRoutes);
