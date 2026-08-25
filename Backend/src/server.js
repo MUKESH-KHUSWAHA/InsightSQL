@@ -10,11 +10,24 @@ const app = express();
 
 // --------------- Middleware ---------------
 
-// CORS — allow frontend (Vite dev server) to call the API
+// CORS — allow frontend (Vite dev server locally, Vercel in production)
+const allowedOrigins =
+  env.NODE_ENV === 'production'
+    ? [env.FRONTEND_URL || 'https://insight-sql-eosin.vercel.app']
+    : ['http://localhost:5173', 'http://localhost:5174'];
+
 app.use(cors({
-  origin: env.NODE_ENV === 'production'
-    ? [env.FRONTEND_URL || 'https://insight-sql-sosin.vercel.app']
-    : ['http://localhost:5173', 'http://localhost:5174'],
+  origin: function (origin, callback) {
+    // allow requests with no origin (e.g. curl, Postman, server-to-server)
+    if (!origin) return callback(null, true);
+
+    if (allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      console.warn(`Blocked by CORS: ${origin}`);
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   methods: ['GET', 'POST'],
   allowedHeaders: ['Content-Type'],
   credentials: true,
@@ -31,6 +44,7 @@ app.get('/', (req, res) => {
     success: true,
     message: 'InsightSQL Backend API',
     version: '1.0.0',
+    environment: env.NODE_ENV,
     endpoints: {
       health: '/api/health',
       summary: '/api/summary',
@@ -61,6 +75,7 @@ app.use(errorHandler);
 app.listen(env.PORT, () => {
   console.log(`\n🚀 InsightSQL Backend running on http://localhost:${env.PORT}`);
   console.log(`   Environment: ${env.NODE_ENV}`);
+  console.log(`   Allowed origins: ${allowedOrigins.join(', ')}`);
   console.log(`   Health check: http://localhost:${env.PORT}/api/health\n`);
 });
 
