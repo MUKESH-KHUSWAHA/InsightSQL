@@ -13,10 +13,11 @@ const app = express();
 // CORS — allow frontend (Vite dev server) to call the API
 app.use(cors({
   origin: env.NODE_ENV === 'production'
-    ? process.env.FRONTEND_URL
+    ? [process.env.FRONTEND_URL || 'https://insight-sql-sosin.vercel.app']
     : ['http://localhost:5173', 'http://localhost:5174'],
   methods: ['GET', 'POST'],
   allowedHeaders: ['Content-Type'],
+  credentials: true,
 }));
 
 // Parse JSON request bodies
