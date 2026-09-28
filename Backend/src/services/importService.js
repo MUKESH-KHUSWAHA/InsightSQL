@@ -54,7 +54,19 @@ async function importCsvToTable({ table, rows, mode, pool }) {
         const values = columns.map(col => row[col]);
         await client.query(insertSql, values);
       } catch (rowErr) {
-        // Provide detailed error for the specific row that failed
+        // Check if this is a duplicate key violation (Postgres error code 23505)
+        if (rowErr.code === '23505') {
+          // Extract the ID column name and value for a clearer message
+          const idColumn = schema.hasIdColumn;
+          const idValue = row[idColumn];
+          throw new Error(
+            `Row ${i + 1}: this record already exists (ID ${idValue}). ` +
+            `To overwrite existing data, use 'Replace' mode instead of 'Append', ` +
+            `or remove this row from your CSV and try again.`
+          );
+        }
+        
+        // For all other database errors, provide detailed error
         throw new Error(
           `Row ${i + 1} failed to insert: ${rowErr.message}. ` +
           `Row data: ${JSON.stringify(row)}`
