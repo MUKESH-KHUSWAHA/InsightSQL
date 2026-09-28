@@ -100,6 +100,49 @@ function extractSQL(rawResponse) {
   return text;
 }
 
+// --------------- Transient-overload retry helper ---------------
+
+// Backoff delays (ms) before each retry attempt — only used for 503/overload errors
+const OVERLOAD_RETRY_DELAYS_MS = [1000, 3000];
+
+function isOverloadError(err) {
+  if (err && err.status === 503) return true;
+  const msg = (err && err.message) || '';
+  return /overloaded|high demand|503|service unavailable/i.test(msg);
+}
+
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+/**
+ * Call Gemini's generateContent, retrying only on transient 503/overload
+ * errors with a short backoff. Any other error (bad API key, invalid
+ * request, etc.) is thrown immediately without retrying.
+ */
+async function callGeminiWithRetry(model, prompt) {
+  let lastErr;
+  for (let attempt = 0; attempt <= OVERLOAD_RETRY_DELAYS_MS.length; attempt++) {
+    try {
+      return await model.generateContent(prompt);
+    } catch (err) {
+      lastErr = err;
+      const hasRetriesLeft = attempt < OVERLOAD_RETRY_DELAYS_MS.length;
+      if (hasRetriesLeft && isOverloadError(err)) {
+        const delay = OVERLOAD_RETRY_DELAYS_MS[attempt];
+        console.error(
+          `[aiService] Gemini overloaded (attempt ${attempt + 1}/${OVERLOAD_RETRY_DELAYS_MS.length + 1}), retrying in ${delay}ms:`,
+          err.message
+        );
+        await sleep(delay);
+        continue;
+      }
+      throw err;
+    }
+  }
+  throw lastErr;
+}
+
 // --------------- Main export ---------------
 
 /**
@@ -120,7 +163,17 @@ async function generateSQL(question) {
 
   const prompt = `${SYSTEM_PROMPT}\n\nUser question: ${question}`;
 
-  const result = await model.generateContent(prompt);
+  let result;
+  try {
+    result = await callGeminiWithRetry(model, prompt);
+  } catch (err) {
+    // Never let raw vendor/technical error text (endpoint URLs, SDK error
+    // class names, etc.) reach the client — log it here for debugging and
+    // surface a clean, generic message instead.
+    console.error('[aiService] Gemini API call failed:', err);
+    throw new Error('The AI assistant is temporarily busy handling requests. Please try again in a moment.');
+  }
+
   const rawText = result.response.text();
 
   // Check if Gemini flagged the question as unrelated
