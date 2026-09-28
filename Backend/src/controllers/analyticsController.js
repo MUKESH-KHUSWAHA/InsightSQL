@@ -108,6 +108,65 @@ async function getRetentionRate(req, res, next) {
   }
 }
 
+/**
+ * GET /api/revenue/growth
+ * Returns: [{ month, revenue, growth_rate }]
+ */
+async function getRevenueGrowth(req, res, next) {
+  try {
+    const data = await analyticsService.getRevenueGrowth();
+    res.json({ success: true, data });
+  } catch (err) {
+    next(err);
+  }
+}
+
+/**
+ * GET /api/customers/churn
+ * Returns: { active_customers, churned_customers, churn_rate_pct, churned_list }
+ */
+async function getCustomerChurn(req, res, next) {
+  try {
+    const data = await analyticsService.getCustomerChurn();
+    res.json({ success: true, data });
+  } catch (err) {
+    next(err);
+  }
+}
+
+/**
+ * GET /api/products/performance?limit=20
+ * Returns: [{ product_id, name, category, total_units, total_revenue, avg_order_value, sales_velocity }]
+ */
+async function getProductPerformance(req, res, next) {
+  try {
+    const limit = parseLimit(req.query.limit, 20);
+    if (limit === null) {
+      return res.status(400).json({
+        success: false,
+        error: 'Invalid limit. Must be an integer between 1 and 100.',
+      });
+    }
+    const data = await analyticsService.getProductPerformance(limit);
+    res.json({ success: true, data });
+  } catch (err) {
+    next(err);
+  }
+}
+
+/**
+ * GET /api/customers/segments
+ * Returns: { new, active, dormant, lost, segments }
+ */
+async function getCustomerSegments(req, res, next) {
+  try {
+    const data = await analyticsService.getCustomerSegments();
+    res.json({ success: true, data });
+  } catch (err) {
+    next(err);
+  }
+}
+
 module.exports = {
   getDashboardSummary,
   getMonthlyRevenue,
@@ -115,4 +174,8 @@ module.exports = {
   getTopCustomers,
   getAtRiskCustomers,
   getRetentionRate,
+  getRevenueGrowth,
+  getCustomerChurn,
+  getProductPerformance,
+  getCustomerSegments,
 };
