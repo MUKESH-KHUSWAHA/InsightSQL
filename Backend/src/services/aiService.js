@@ -154,7 +154,7 @@ async function callGeminiWithRetry(model, prompt) {
  */
 async function generateSQL(question) {
   const model = genAI.getGenerativeModel({
-    model: 'gemini-3.6-flash',
+    model: 'gemini-3.8-flash',
     generationConfig: {
       temperature: 0.1,        // Low temperature = deterministic, accurate SQL
       maxOutputTokens: 1024,   // SQL queries don't need to be long
