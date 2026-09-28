@@ -92,12 +92,27 @@ async function handleCsvImport(req, res, next) {
     }
 
     // Import to database
-    const result = await importCsvToTable({
-      table,
-      rows: parsedRows,
-      mode,
-      pool,
-    });
+    let result;
+    try {
+      result = await importCsvToTable({
+        table,
+        rows: parsedRows,
+        mode,
+        pool,
+      });
+    } catch (importErr) {
+      // Check if this is a duplicate-key error (friendly message already generated)
+      // Pattern: "Row X: this record already exists (ID Y)..."
+      if (importErr.message.includes('this record already exists')) {
+        return res.status(409).json({
+          success: false,
+          error: importErr.message,
+        });
+      }
+      
+      // For all other unexpected database errors, pass to global error handler
+      throw importErr;
+    }
 
     // Log success
     console.log(
