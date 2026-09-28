@@ -125,7 +125,8 @@ export async function importCsv(table, mode, file) {
     },
   });
   
-  return res.data;
+  // Interceptor already returned the body, so res IS the data object
+  return res;
 }
 
 export default api;
