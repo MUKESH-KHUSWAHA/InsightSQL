@@ -2,7 +2,7 @@
 
 > AI-powered SQL analytics with natural language querying
 
-A full-stack business analytics platform demonstrating PostgreSQL analytics, React data visualization, Express REST APIs, and AI-powered natural-language-to-SQL querying using Google Gemini.
+InsightSQL is a business analytics platform that turns raw sales data into actionable insights. It provides real-time dashboards for revenue trends, product performance, and customer behavior, plus a natural-language query interface for asking business questions directly against the underlying data. Built to work with any structured business dataset — load your own data and get instant analytics.
 
 **Tech Stack:** React 19 • Vite 8 • Tailwind CSS • Node.js • Express 5 • PostgreSQL (Neon) • Google Gemini API
 
@@ -398,12 +398,6 @@ Set environment variables:
 
 ---
 
-## 🤝 Contributing
-
-This is an interview portfolio project. Suggestions and feedback welcome!
-
----
-
 ## 📄 License
 
 This project is open source and available for educational purposes.
@@ -412,7 +406,7 @@ This project is open source and available for educational purposes.
 
 ## 👤 Author
 
-Built to demonstrate full-stack engineering skills including:
+This project implements:
 - PostgreSQL analytics and query optimization
 - REST API design and security
 - React data visualization and state management
