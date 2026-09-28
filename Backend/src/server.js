@@ -4,6 +4,7 @@ const env = require('./config/env');
 const healthRoutes = require('./routes/healthRoutes');
 const analyticsRoutes = require('./routes/analyticsRoutes');
 const askRoutes = require('./routes/askRoutes');
+const importRoutes = require('./routes/importRoutes');
 const { errorHandler, notFoundHandler } = require('./middleware/errorHandler');
 
 const app = express();
@@ -61,6 +62,7 @@ app.get('/', (req, res) => {
 app.use('/api/health', healthRoutes);
 app.use('/api', analyticsRoutes);
 app.use('/api', askRoutes);
+app.use('/api/admin/import', importRoutes);
 
 // --------------- Error Handling ---------------
 

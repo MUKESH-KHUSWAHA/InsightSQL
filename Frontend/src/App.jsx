@@ -3,6 +3,7 @@ import ErrorBoundary from './components/ErrorBoundary';
 import Layout from './components/Layout';
 import Dashboard from './pages/Dashboard';
 import AskAI from './pages/AskAI';
+import ImportData from './pages/ImportData';
 
 /**
  * App — root router.
@@ -17,6 +18,7 @@ export default function App() {
           <Routes>
             <Route path="/" element={<Dashboard />} />
             <Route path="/ask" element={<AskAI />} />
+            <Route path="/import" element={<ImportData />} />
             {/* Catch-all → redirect to dashboard */}
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>

@@ -1,0 +1,51 @@
+customer_id,name,email,signup_date
+1,"Ganesh Auto Components, Delhi",procurement@ganeshautocomponen.co.in,2025-09-04
+2,"Reliable Plastics Ltd, Nashik",procurement@reliableplasticslt.co.in,2026-04-25
+3,"Sahyadri Precision Tools, Noida",procurement@sahyadriprecisiont.co.in,2026-04-17
+4,"Vishal Electricals Pvt Ltd, Gurugram",procurement@vishalelectricalsp.co.in,2025-05-08
+5,"Vikas Food Processing, Faridabad",procurement@vikasfoodprocessin.co.in,2026-05-07
+6,"Om Fabricators, Pune",procurement@omfabricators.co.in,2025-09-27
+7,"Sahyadri Automotive Pvt Ltd, Delhi",procurement@sahyadriautomotive.co.in,2025-12-31
+8,"Anand Textiles Mills, Nagpur",procurement@anandtextilesmills.co.in,2026-02-08
+9,"Apex Foundry & Forge, Aurangabad",procurement@apexfoundryforge.co.in,2025-11-27
+10,"Vikas Plastics Ltd, Delhi",procurement@vikasplasticsltd.co.in,2025-09-20
+11,"Sterling Manufacturing Co., Vadodara",procurement@sterlingmanufactur.co.in,2025-06-30
+12,"Ashoka Plastics Ltd, Ludhiana",procurement@ashokaplasticsltd.co.in,2025-03-21
+13,"Malwa Steel Corp, Noida",procurement@malwasteelcorp.co.in,2025-03-20
+14,"National Pharma Pvt Ltd, Noida",procurement@nationalpharmapvtl.co.in,2025-06-02
+15,"Surya Packaging Industries, Rajkot",procurement@suryapackagingindu.co.in,2026-05-05
+16,"Sai Paper Mills, Nagpur",procurement@saipapermills.co.in,2025-09-16
+17,"Vindhya Pharma Pvt Ltd, Gurugram",procurement@vindhyapharmapvtlt.co.in,2025-09-14
+18,"Anand Machine Tools, Kanpur",procurement@anandmachinetools.co.in,2025-06-25
+19,"Shakti Textiles Mills, Gurugram",procurement@shaktitextilesmill.co.in,2026-06-04
+20,"Sai Foundry & Forge, Coimbatore",procurement@saifoundryforge.co.in,2025-03-28
+21,"National Foundry & Forge, Noida",procurement@nationalfoundryfor.co.in,2025-11-22
+22,"Vishwa Plastics Ltd, Aurangabad",procurement@vishwaplasticsltd.co.in,2026-06-02
+23,"Ganesh Packaging Industries, Ahmedabad",procurement@ganeshpackagingind.co.in,2026-06-04
+24,"Indus Packaging Industries, Pune",procurement@induspackagingindu.co.in,2026-06-03
+25,"Jai Plastics Ltd, Gurugram",procurement@jaiplasticsltd.co.in,2026-03-01
+26,"Mahindra Manufacturing Co., Nagpur",procurement@mahindramanufactur.co.in,2025-03-23
+27,"Elite Foundry & Forge, Ahmedabad",procurement@elitefoundryforge.co.in,2025-12-05
+28,"Metro Pharma Pvt Ltd, Rajkot",procurement@metropharmapvtltd.co.in,2026-03-08
+29,"Ganesh Electricals Pvt Ltd, Nashik",procurement@ganeshelectricalsp.co.in,2025-08-31
+30,"Vishal Steel Corp, Faridabad",procurement@vishalsteelcorp.co.in,2026-02-23
+31,"Sahyadri Industries, Indore",procurement@sahyadriindustries.co.in,2025-11-11
+32,"Prime Plastics Ltd, Gurugram",procurement@primeplasticsltd.co.in,2026-07-02
+33,"Malwa Agro Industries, Indore",procurement@malwaagroindustrie.co.in,2025-03-02
+34,"Malwa Chemicals Ltd, Jaipur",procurement@malwachemicalsltd.co.in,2026-05-15
+35,"Hind Paper Mills, Ludhiana",procurement@hindpapermills.co.in,2025-10-15
+36,"Godavari Precision Tools, Nashik",procurement@godavariprecisiont.co.in,2025-03-11
+37,"Reliable Electricals Pvt Ltd, Nagpur",procurement@reliableelectrical.co.in,2025-06-27
+38,"Godavari Agro Industries, Vadodara",procurement@godavariagroindust.co.in,2025-08-22
+39,"Vikas Pharma Pvt Ltd, Kanpur",procurement@vikaspharmapvtltd.co.in,2026-02-07
+40,"Pragati Chemicals Ltd, Gurugram",procurement@pragatichemicalslt.co.in,2026-06-04
+41,"Sterling Industries, Noida",procurement@sterlingindustries.co.in,2025-07-28
+42,"Satpura Manufacturing Co., Vadodara",procurement@satpuramanufacturi.co.in,2026-02-24
+43,"Mahindra Fabricators, Jaipur",procurement@mahindrafabricator.co.in,2025-11-11
+44,"Vishwa Rubber Industries, Aurangabad",procurement@vishwarubberindust.co.in,2025-11-17
+45,"Unnati Plastics Ltd, Nagpur",procurement@unnatiplasticsltd.co.in,2025-04-07
+46,"Shree Auto Components, Nagpur",procurement@shreeautocomponent.co.in,2026-05-12
+47,"Sterling Plastics Ltd, Indore",procurement@sterlingplasticslt.co.in,2026-02-14
+48,"Vindhya Machine Tools, Vadodara",procurement@vindhyamachinetool.co.in,2026-07-23
+49,"Ganga Paper Mills, Delhi",procurement@gangapapermills.co.in,2026-06-15
+50,"Elite Plastics Ltd, Hyderabad",procurement@eliteplasticsltd.co.in,2025-10-15

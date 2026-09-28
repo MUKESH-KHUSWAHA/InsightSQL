@@ -23,6 +23,19 @@ const NAV_ITEMS = [
   },
 ];
 
+const ADMIN_ITEMS = [
+  {
+    to: '/import',
+    label: 'Import Data (Demo)',
+    icon: (
+      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+        <path strokeLinecap="round" strokeLinejoin="round"
+          d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+      </svg>
+    ),
+  },
+];
+
 /**
  * Sidebar navigation — always visible on desktop, hidden on mobile.
  */
@@ -62,6 +75,25 @@ export default function Sidebar() {
             {item.label}
           </NavLink>
         ))}
+
+        {/* Admin section */}
+        <div className="mt-4 pt-4 border-t border-surface-700">
+          <p className="text-[10px] font-semibold text-slate-500 uppercase tracking-wider px-3 mb-2">
+            Admin
+          </p>
+          {ADMIN_ITEMS.map((item) => (
+            <NavLink
+              key={item.to}
+              to={item.to}
+              className={({ isActive }) =>
+                `nav-link ${isActive ? 'active' : ''}`
+              }
+            >
+              {item.icon}
+              {item.label}
+            </NavLink>
+          ))}
+        </div>
       </nav>
 
       {/* Footer */}

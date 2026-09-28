@@ -107,4 +107,25 @@ export async function askQuestion(question) {
   return res.data;
 }
 
+/**
+ * POST /api/admin/import/:table?mode=append|replace
+ * Upload CSV file to import data into a table
+ * @param {string} table — Table name (customers, products, orders, order_items)
+ * @param {string} mode — "append" or "replace"
+ * @param {File} file — CSV file to upload
+ * @returns {{ table: string, mode: string, rowsImported: number }}
+ */
+export async function importCsv(table, mode, file) {
+  const formData = new FormData();
+  formData.append('file', file);
+  
+  const res = await api.post(`/api/admin/import/${table}?mode=${mode}`, formData, {
+    headers: {
+      'Content-Type': 'multipart/form-data',
+    },
+  });
+  
+  return res.data;
+}
+
 export default api;
