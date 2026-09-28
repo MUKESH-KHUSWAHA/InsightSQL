@@ -129,4 +129,22 @@ export async function importCsv(table, mode, file) {
   return res;
 }
 
+/**
+ * GET /api/customers/churn
+ * @returns {{ active_customers: number, churned_customers: number, churn_rate_pct: number, churned_list: Array }}
+ */
+export async function fetchCustomerChurn() {
+  const res = await api.get('/api/customers/churn');
+  return res.data;
+}
+
+/**
+ * GET /api/customers/segments
+ * @returns {{ new: number, active: number, dormant: number, lost: number, segments: Array }}
+ */
+export async function fetchCustomerSegments() {
+  const res = await api.get('/api/customers/segments');
+  return res.data;
+}
+
 export default api;

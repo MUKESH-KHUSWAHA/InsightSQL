@@ -6,6 +6,7 @@
  *   Row 2: Revenue Trend Chart (full width)
  *   Row 3: Top Products Chart (60%) | Retention Ring (40%)
  *   Row 4: Top Customers Table (50%) | At-Risk Table (50%)
+ *   Row 5: Customer Churn Card (50%) | Customer Segments Card (50%)
  *
  * Every section fetches its own data via useApi → no prop-drilling.
  */
@@ -16,6 +17,8 @@ import TopProductsChart from '../components/TopProductsChart';
 import TopCustomersTable from '../components/TopCustomersTable';
 import AtRiskTable from '../components/AtRiskTable';
 import RetentionCard from '../components/RetentionCard';
+import ChurnCard from '../components/ChurnCard';
+import SegmentsCard from '../components/SegmentsCard';
 import useApi from '../hooks/useApi';
 import { fetchSummary, fetchRetention } from '../services/api';
 
@@ -126,6 +129,12 @@ export default function Dashboard() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           <TopCustomersTable />
           <AtRiskTable />
+        </div>
+
+        {/* Row 5: Customer Churn + Lifecycle Segments */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <ChurnCard />
+          <SegmentsCard />
         </div>
       </div>
     </div>

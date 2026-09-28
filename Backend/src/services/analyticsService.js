@@ -300,9 +300,9 @@ async function getProductPerformance(limit = 20) {
       ROUND(AVG(oi.quantity * oi.unit_price), 2) AS avg_order_value,
       ROUND(
         SUM(oi.quantity)::numeric /
-        NULLIF(
-          EXTRACT(DAY FROM AGE(MAX(o.order_date), MIN(o.order_date))) + 1,
-          0
+        GREATEST(
+          (MAX(o.order_date)::date - MIN(o.order_date)::date) + 1,
+          1
         ),
         2
       ) AS sales_velocity
