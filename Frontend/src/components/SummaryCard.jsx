@@ -2,17 +2,18 @@
  * SummaryCard — displays a single KPI metric with label and icon.
  *
  * Props:
- *   label   {string}  — e.g. "Total Revenue"
- *   value   {string}  — formatted value e.g. "$451,777"
- *   icon    {ReactNode}
- *   accent  {string}  — Tailwind color class for the icon background, e.g. "bg-primary-600/20 text-primary-400"
- *   loading {boolean}
+ *   label     {string}  — e.g. "Total Revenue"
+ *   value     {string}  — formatted value e.g. "$451,777"
+ *   icon      {ReactNode}
+ *   accent    {string}  — Tailwind color class for the icon background, e.g. "bg-primary-600/20 text-primary-400"
+ *   loading   {boolean}
+ *   highlight {boolean} — adds a colored left border accent (optional)
  */
-export default function SummaryCard({ label, value, icon, accent, loading }) {
+export default function SummaryCard({ label, value, icon, accent, loading, highlight }) {
   return (
-    <div className="card flex items-start gap-4">
+    <div className={`card flex items-start gap-4 ${highlight ? 'border-l-2 border-l-primary-500' : ''}`}>
       {/* Icon */}
-      <div className={`w-10 h-10 rounded-lg flex items-center justify-center shrink-0 ${accent}`}>
+      <div className={`w-10 h-10 rounded-lg flex items-center justify-center shrink-0 opacity-70 ${accent}`}>
         {icon}
       </div>
 

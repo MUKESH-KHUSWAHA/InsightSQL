@@ -53,7 +53,7 @@ export default function AskAI() {
     <div className="flex flex-col flex-1">
       <Header
         title="Ask AI"
-        subtitle="Ask business questions in natural language — powered by Gemini"
+        subtitle="Ask business questions in natural language — AI-powered"
       />
       
       <div className="flex-1 p-6 space-y-6">

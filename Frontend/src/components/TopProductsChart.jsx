@@ -22,10 +22,10 @@ import EmptyState from './EmptyState';
 
 const LIMIT = 8;
 
-// Gradient colour for bars — fade from indigo to violet
+// Gradient color for bars — amber/orange tones (industrial B2B)
 const BAR_COLORS = [
-  '#6366f1', '#7c3aed', '#8b5cf6', '#6366f1',
-  '#818cf8', '#a5b4fc', '#c7d2fe', '#818cf8',
+  '#d97706', '#f59e0b', '#fb923c', '#d97706',
+  '#fbbf24', '#fcd34d', '#fde68a', '#fbbf24',
 ];
 
 function CustomTooltip({ active, payload }) {
@@ -74,7 +74,7 @@ export default function TopProductsChart() {
             layout="vertical"
             margin={{ top: 4, right: 16, left: 4, bottom: 4 }}
           >
-            <CartesianGrid strokeDasharray="3 3" stroke="#252d42" horizontal={false} />
+            <CartesianGrid strokeDasharray="3 3" stroke="#252d42" strokeOpacity={0.1} horizontal={false} />
             <XAxis
               type="number"
               tickFormatter={v => `$${(v / 1000).toFixed(0)}k`}

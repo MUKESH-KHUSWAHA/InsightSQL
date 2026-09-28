@@ -6,8 +6,8 @@
  */
 import {
   ResponsiveContainer,
-  LineChart,
-  Line,
+  AreaChart,
+  Area,
   XAxis,
   YAxis,
   CartesianGrid,
@@ -73,8 +73,14 @@ export default function RevenueChart() {
 
       {!loading && !error && chartData.length > 0 && (
         <ResponsiveContainer width="100%" height={280}>
-          <LineChart data={chartData} margin={{ top: 4, right: 16, left: 0, bottom: 4 }}>
-            <CartesianGrid strokeDasharray="3 3" stroke="#252d42" vertical={false} />
+          <AreaChart data={chartData} margin={{ top: 4, right: 16, left: 0, bottom: 4 }}>
+            <defs>
+              <linearGradient id="revenueGradient" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor="#d97706" stopOpacity={0.25} />
+                <stop offset="100%" stopColor="#d97706" stopOpacity={0} />
+              </linearGradient>
+            </defs>
+            <CartesianGrid strokeDasharray="3 3" stroke="#252d42" strokeOpacity={0.1} vertical={false} />
             <XAxis
               dataKey="month"
               tick={{ fill: '#94a3b8', fontSize: 11 }}
@@ -90,15 +96,16 @@ export default function RevenueChart() {
               width={52}
             />
             <Tooltip content={<CustomTooltip />} />
-            <Line
+            <Area
               type="monotone"
               dataKey="revenue"
-              stroke="#6366f1"
+              stroke="#d97706"
               strokeWidth={2.5}
-              dot={{ r: 3, fill: '#6366f1', strokeWidth: 0 }}
-              activeDot={{ r: 5, fill: '#818cf8', strokeWidth: 0 }}
+              fill="url(#revenueGradient)"
+              dot={{ r: 3, fill: '#d97706', strokeWidth: 0 }}
+              activeDot={{ r: 5, fill: '#f59e0b', strokeWidth: 0 }}
             />
-          </LineChart>
+          </AreaChart>
         </ResponsiveContainer>
       )}
     </div>

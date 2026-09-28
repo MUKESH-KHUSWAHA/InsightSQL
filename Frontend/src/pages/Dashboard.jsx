@@ -72,6 +72,7 @@ function SummaryCards() {
         icon={Icons.revenue}
         accent="bg-primary-600/20 text-primary-400"
         loading={sLoading}
+        highlight={true}
       />
       <SummaryCard
         label="Total Orders"
@@ -84,7 +85,7 @@ function SummaryCards() {
         label="Total Customers"
         value={customers}
         icon={Icons.customers}
-        accent="bg-violet-600/20 text-violet-400"
+        accent="bg-primary-600/20 text-primary-400"
         loading={sLoading}
       />
       <SummaryCard
@@ -105,7 +106,7 @@ export default function Dashboard() {
     <div className="flex flex-col flex-1">
       <Header
         title="Dashboard"
-        subtitle="Business analytics from your Neon PostgreSQL database"
+        subtitle="Real-time business analytics and insights"
       />
 
       <div className="flex-1 p-4 md:p-6 space-y-6">

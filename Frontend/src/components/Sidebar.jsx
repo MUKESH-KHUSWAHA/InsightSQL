@@ -26,7 +26,7 @@ const NAV_ITEMS = [
 const ADMIN_ITEMS = [
   {
     to: '/import',
-    label: 'Import Data (Demo)',
+    label: 'Data Import',
     icon: (
       <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
         <path strokeLinecap="round" strokeLinejoin="round"
@@ -99,7 +99,7 @@ export default function Sidebar() {
       {/* Footer */}
       <div className="mt-auto px-3 pt-6 border-t border-surface-600">
         <p className="text-[10px] text-slate-600 leading-relaxed">
-          Data sourced from Neon PostgreSQL. All analytics are computed live.
+          All analytics are computed live from your database.
         </p>
       </div>
     </aside>

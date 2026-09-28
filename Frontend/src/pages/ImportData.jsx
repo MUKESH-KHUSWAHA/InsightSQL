@@ -84,7 +84,7 @@ export default function ImportData() {
   return (
     <div className="flex flex-col flex-1">
       <Header
-        title="Import Data (Demo)"
+        title="Data Import"
         subtitle="Upload CSV files to populate the database tables"
       />
 
